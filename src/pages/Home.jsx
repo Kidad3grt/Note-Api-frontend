@@ -16,16 +16,17 @@ function Home() {
 
     const getNotes = async () => {
         try {
-            const res = await api.get("notes/");
+            const res = await api.get("/notes/");
             setNotes(res.data);
         } catch (err) {
+            console.error(err.response?.data || err);
             alert("Failed to load notes");
         }
     };
 
     const deleteNote = async (id) => {
         try {
-            const res = await api.delete(`notes/delete/${id}/`);
+            const res = await api.delete(`/notes/delete/${id}/`);
 
             if (res.status === 204) {
                 alert("Note deleted!");
@@ -33,6 +34,7 @@ function Home() {
             }
 
         } catch (err) {
+            console.error(err.response?.data || err);
             alert("Error deleting note");
         }
     };
@@ -41,7 +43,7 @@ function Home() {
         e.preventDefault();
 
         try {
-            const res = await api.post("notes/", { title, content });
+            const res = await api.post("/notes/", { title, content });
 
             if (res.status === 201) {
                 alert("Note created!");
@@ -51,6 +53,7 @@ function Home() {
             }
 
         } catch (err) {
+            console.error(err.response?.data || err);
             alert("Error creating note");
         }
     };
