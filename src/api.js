@@ -4,7 +4,7 @@ import { ACCESS_TOKEN, REFRESH_TOKEN } from "./constants";
 
 // Use env variable with fallback
 const API_URL =
-  import.meta.env.VITE_API_URL || "http://127.0.0.1:8000/api/";
+  import.meta.env.VITE_API_URL || "http://127.0.0.1:8000/api";
 
 // Axios instance
 const api = axios.create({
@@ -56,7 +56,7 @@ api.interceptors.response.use(
 
         // Use API_URL instead of hardcoded localhost
         const res = await axios.post(
-          `${API_URL}token/refresh/`,
+          `${API_URL}/token/refresh/`,
           {
             refresh: refreshToken,
           }
