@@ -13,6 +13,9 @@ function Form({ route, method }) {
 
     const name = method === "login" ? "Login" : "Register";
 
+      // Determine route based on method
+    const route = method === "login" ? "/token/" : "/user/register/";
+
     const handleSubmit = async (e) => {
         setLoading(true);
         e.preventDefault();
@@ -27,7 +30,7 @@ function Form({ route, method }) {
                 navigate("/login")
             }
         } catch (error) {
-            alert(error)
+           alert(error.response?.data || error.message);
         } finally {
             setLoading(false)
         }
