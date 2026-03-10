@@ -34,3 +34,7 @@
 .form-button:hover {
   background-color: #0056b3;
 }
+
+.form-footer {
+  margin-top: 15px;
+}

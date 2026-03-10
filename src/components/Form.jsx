@@ -51,9 +51,25 @@ function Form({ route, method }) {
                 placeholder="Password"
             />
             {loading && <LoadingIndicator />}
-            <button className="form-button" type="submit">
+            <button className="form-button" type="submit" disabled={loading}>
                 {name}
             </button>
+
+            <div className="form-footer">
+
+                    {method === "login" ? (
+                        <p>
+                            Don't have an account?{" "}
+                            <Link to="/register">Register</Link>
+                        </p>
+                    ) : (
+                        <p>
+                            Already have an account?{" "}
+                            <Link to="/login">Login</Link>
+                        </p>
+                    )}
+
+            </div>
         </form>
     );
 }
