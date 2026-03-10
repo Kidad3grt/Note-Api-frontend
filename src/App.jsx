@@ -1,4 +1,5 @@
 import react  from "react"
+import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
@@ -19,10 +20,11 @@ function RegisterAndLogout() {
 
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("access"));
   return (
     <BrowserRouter>
-    
-     <Navbar /> 
+
+     <Navbar  isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} /> 
 
       <Routes>
         <Route
@@ -33,9 +35,9 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="/login" element={<Login />} />
-        <Route path="/logout" element={<Logout />} />
-        <Route path="/register" element={<RegisterAndLogout/>} />
+        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="/logout" element={<Logout setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="/register" element={<RegisterAndLogout setIsLoggedIn={setIsLoggedIn}/>} />
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </BrowserRouter>

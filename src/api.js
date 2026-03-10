@@ -85,7 +85,7 @@ api.interceptors.response.use(
 
 
 // Logout function
-function logoutUser() {
+export function logoutUser() {
 
   localStorage.removeItem(ACCESS_TOKEN);
   localStorage.removeItem(REFRESH_TOKEN);

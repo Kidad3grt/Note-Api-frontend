@@ -1,34 +1,41 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import {logoutUser} from "../api"
+import "../styles/Navbar.css"
 
-function Navbar() {
-  const navigate = useNavigate();
 
-  const handleLogout = () => {
-    localStorage.clear();
-    navigate("/login");
+function Navbar({ isLoggedIn, setIsLoggedIn }) {
+    const handleLogout = () => {
+    logoutUser(); // removes tokens
+    setIsLoggedIn(false); // tell React to re-render
   };
 
-  const isLoggedIn = localStorage.getItem("access");
+  const navigate = useNavigate();
+  
+ return (
+  <nav className="navbar">
+    <div className="navbar-container">
+  
+      {/* LEFT SIDE — APP NAME */}
+      <h2 className="navbar-logo"
+          onClick={() => navigate("/")}>
+          Notes App
+      </h2>
 
-  return (
-    <nav className="navbar">
-      <h2>Notes App</h2>
-
-      <div>
-        {isLoggedIn ? (
-          <>
-            <Link to="/">Home</Link>
-            <button onClick={handleLogout}>Logout</button>
-          </>
-        ) : (
-          <>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
-          </>
+      {/* RIGHT SIDE — ACTIONS */}
+      <div className="navbar-actions">
+        {isLoggedIn && (
+          <button
+            className="logout-btn"
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
         )}
       </div>
-    </nav>
-  );
+
+     </div>
+   </nav>
+);
 }
 
 export default Navbar;

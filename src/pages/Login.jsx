@@ -1,7 +1,7 @@
 import Form from "../components/Form"
 
-function Login() {
-    return <Form route="/token/" method="login" />
+function Login({ setIsLoggedIn }) {
+    return <Form route="/token/" method="login" setIsLoggedIn={setIsLoggedIn} />
 }
 
 export default Login

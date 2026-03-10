@@ -1,0 +1,50 @@
+/* NAVBAR MAIN */
+.navbar {
+  background-color: #2563eb; /* blue */
+  width: 100%;
+  padding: 14px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* CONTAINER */
+.navbar-container {
+  width: 95%;
+  padding: 0 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LOGO (LEFT) */
+.navbar-logo {
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* RIGHT SECTION */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+}
+
+/* LOGOUT BUTTON */
+.logout-btn {
+  background-color: white;
+  color: #2563eb;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* HOVER EFFECT */
+.logout-btn:hover {
+  background-color: #f1f5f9;
+  transform: translateY(-1px);
+}
